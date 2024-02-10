@@ -1,5 +1,7 @@
-github.com/bopoh24/go-max7219-rpi v0.1.0 h1:H0ERg+E1cr1ZG5aM+xANhfetfFMn4wEAcycIIkcBOGw=
-github.com/bopoh24/go-max7219-rpi v0.1.0/go.mod h1:7qWVLkUVu0Q9D7kr876XmmNIYhi0TEed4wU9yqNlIt4=
+github.com/adrianh-za/go-max7219 v0.1.0 h1:wwBvMrxT/NgB/jnW0jPuXLT+3JIFlXQglQJcbWw5pzQ=
+github.com/adrianh-za/go-max7219 v0.1.0/go.mod h1:/PKSJybYbEqkb3KoVp5DF244ZoLG9hbon18HPFvPBeg=
+github.com/adrianh-za/go-max7219 v0.1.1-0.20190719164134-28b977acc587 h1:+XCYQCfPPafVr11PWWAcBCqeA6H3YkyHtIG4rEIEarg=
+github.com/adrianh-za/go-max7219 v0.1.1-0.20190719164134-28b977acc587/go.mod h1:/PKSJybYbEqkb3KoVp5DF244ZoLG9hbon18HPFvPBeg=
 github.com/fulr/spidev v0.0.0-20150210165549-524e13e3fac2 h1:Bpecy8A24LtdIGkRUQTzoWf2mR0zkvxzAgTN5iP2iXM=
 github.com/fulr/spidev v0.0.0-20150210165549-524e13e3fac2/go.mod h1:bMLIIHSjkThym5s6mFw/1rkPjtUDvbxSK4xTe/ai2AM=
 github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 h1:lDH9UUVJtmYCjyT0CI4q8xvlXPxeZ0gYCVvWbmPlp88=

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/bopoh24/go-max7219-rpi"
+	"github.com/adrianh-za/go-max7219"
 	"log"
 	"log/slog"
 	"time"
@@ -17,7 +17,7 @@ func main() {
 
 func mainInternal() error {
 	// Create new LED matrix with number of cascaded devices is equal to 1
-	mtx := max7219.NewMatrix(1)
+	mtx := max7219.NewMatrix(4, max7219.RotateAntiClockwiseInvert)
 	// Open SPI device with spibus and spidev parameters equal to 0 and 0.
 	// Set LED matrix brightness is equal to 7
 	err := mtx.Open(0, 0, 7)
