@@ -1,12 +1,22 @@
 package main
 
 import (
-	"github.com/d2r2/go-max7219"
+	"github.com/bopoh24/go-max7219-rpi"
 	"log"
+	"log/slog"
 	"time"
 )
 
-func main() { // Create new LED matrix with number of cascaded devices is equal to 1
+func main() {
+	if err := mainInternal(); err != nil {
+		slog.Error(err.Error())
+	} else {
+		slog.Info("DONE")
+	}
+}
+
+func mainInternal() error {
+	// Create new LED matrix with number of cascaded devices is equal to 1
 	mtx := max7219.NewMatrix(1)
 	// Open SPI device with spibus and spidev parameters equal to 0 and 0.
 	// Set LED matrix brightness is equal to 7
@@ -23,4 +33,5 @@ func main() { // Create new LED matrix with number of cascaded devices is equal 
 	// Output national text (russian in example) to LED matrix
 	mtx.SlideMessage("Привет мир!!! Шарик, ты - балбес!!!",
 		max7219.FontZXSpectrumRus, true, 50*time.Millisecond)
+	return nil
 }
