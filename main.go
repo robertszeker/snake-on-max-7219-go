@@ -25,8 +25,10 @@ func mainInternal() error {
 	}
 	defer m.Close()
 
-	mouse := object.NewMouse(object.NewPoint(1, 2))
-	m.AddObject(mouse)
+	mouse1 := object.NewMouse(object.NewPoint(1, 2))
+	mouse2 := object.NewMouse(object.NewPoint(3, 2))
+	m.AddObject(mouse1)
+	m.AddObject(mouse2)
 	err = m.PrintObjects()
 	if err != nil {
 		return fmt.Errorf("failed to write point: %w", err)
