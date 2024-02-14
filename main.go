@@ -5,6 +5,7 @@ import (
 	"github.com/robertszeker/snake-on-max-7219-go/matrix"
 	"github.com/robertszeker/snake-on-max-7219-go/object"
 	"log/slog"
+	"time"
 )
 
 // todo: create Makefile to build, send and run remotely
@@ -32,6 +33,13 @@ func mainInternal() error {
 	m.AddObject(mouse2)
 
 	err = m.PrintObjects()
+
+	time.Sleep(2 * time.Second)
+
+	slog.Info("moving mouse ...")
+	mouse1.Change(object.NewPoint(4, 6))
+	err = m.PrintObjects()
+
 	if err != nil {
 		return fmt.Errorf("failed to write point: %w", err)
 	}

@@ -13,3 +13,7 @@ func (m *Mouse) GetPoints() Points {
 }
 
 var _ Printable = &Mouse{}
+
+func (m *Mouse) Change(point *Point) {
+	m.point = point
+}
