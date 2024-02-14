@@ -10,6 +10,8 @@ require (
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fulr/spidev v0.0.0-20150210165549-524e13e3fac2 // indirect
+	github.com/mattn/go-runewidth v0.0.9 // indirect
+	github.com/nsf/termbox-go v1.1.1 // indirect
 	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/text v0.14.0 // indirect

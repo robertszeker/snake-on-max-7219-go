@@ -6,6 +6,19 @@ import (
 	"github.com/robertszeker/snake-on-max-7219-go/object"
 )
 
+func (m *Matrix) GetPrintListener() chan<- bool {
+	p := make(chan bool)
+
+	go func() {
+		for <-p {
+			err := m.PrintObjects()
+			fmt.Println("failed to print object: ", err.Error())
+		}
+	}()
+
+	return p
+}
+
 func (m *Matrix) PrintObjects() error {
 
 	buffer := make(map[int]map[int]byte, m.cascaded)

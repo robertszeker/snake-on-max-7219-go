@@ -40,6 +40,9 @@ func mainInternal() error {
 	mouse1.Change(object.NewPoint(4, 6))
 	err = m.PrintObjects()
 
+	snake := object.NewSnake(object.NewPoint(1, 2), m.GetPrintListener())
+	m.AddObject(snake)
+
 	if err != nil {
 		return fmt.Errorf("failed to write point: %w", err)
 	}
