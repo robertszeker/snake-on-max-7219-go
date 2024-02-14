@@ -2,16 +2,15 @@ package matrix
 
 import (
 	"fmt"
+	"github.com/adrianh-za/go-max7219"
 	"github.com/robertszeker/snake-on-max-7219-go/object"
 )
-
-const LedsInARow = 8
 
 func (m *Matrix) PrintObjects() error {
 
 	buffer := make(map[int]map[int]byte, m.cascaded)
 	for cascadedId := 0; cascadedId < m.cascaded; cascadedId++ {
-		buffer[cascadedId] = make(map[int]byte, 8)
+		buffer[cascadedId] = make(map[int]byte, max7219.MAX7219_REG_LASTDIGIT)
 	}
 
 	for _, obj := range m.objects {
@@ -42,29 +41,16 @@ func (m *Matrix) PrintObjects() error {
 	return nil
 }
 
-func (m *Matrix) printPoint(point *object.Point) error {
-	if err := m.Device.SetBufferLine(
-		m.getCascadedId(point),
-		m.getPosition(point),
-		m.getValue(point),
-		true,
-	); err != nil {
-		return fmt.Errorf("failed to set buffer line: %w", err)
-	}
-
-	return nil
-}
-
 func (m *Matrix) getCascadedId(point *object.Point) int {
 	return (point.X - 1) / 8
 }
 
 func (m *Matrix) getPosition(point *object.Point) int {
-	return LedsInARow - point.Y
+	return max7219.MAX7219_REG_LASTDIGIT - point.Y
 }
 
 func (m *Matrix) getValue(point *object.Point) byte {
-	a := LedsInARow - point.X + LedsInARow*m.getCascadedId(point)
+	a := max7219.MAX7219_REG_LASTDIGIT - point.X + max7219.MAX7219_REG_LASTDIGIT*m.getCascadedId(point)
 
 	return 1 << a
 }
