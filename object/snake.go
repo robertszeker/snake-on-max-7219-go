@@ -7,6 +7,7 @@ import (
 
 type Snake struct {
 	point *Point
+	print func() error
 }
 
 func (s *Snake) GetPoints() Points {
@@ -17,7 +18,17 @@ func (s *Snake) Change(point *Point) {
 	s.point = point
 }
 
-func (s *Snake) move(listener chan<- bool) {
+func NewSnake(point *Point, printFunc func() error) *Snake {
+	snake := &Snake{point, printFunc}
+
+	go snake.move()
+
+	return snake
+}
+
+var _ Printable = &Snake{}
+
+func (s *Snake) move() {
 
 	err := term.Init()
 	if err != nil {
@@ -55,20 +66,14 @@ func (s *Snake) move(listener chan<- bool) {
 				fmt.Println("ASCII : ", ev.Ch)
 
 			}
-			listener <- true
+			err := s.print()
+			// todo proper error handling
+			if err != nil {
+				fmt.Println("error: " + err.Error())
+			}
 		case term.EventError:
 			panic(ev.Err)
 		}
 	}
 	//return nil
 }
-
-func NewSnake(point *Point, printListener chan<- bool) *Snake {
-	snake := &Snake{point}
-
-	go snake.move(printListener)
-
-	return snake
-}
-
-var _ Printable = &Snake{}
